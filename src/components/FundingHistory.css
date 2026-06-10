@@ -1,0 +1,39 @@
+.funding-history {
+
+    margin-top: 40px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.funding-history h2 {
+
+    margin-bottom: 20px;
+}
+
+.funding-history table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.funding-history th,
+.funding-history td {
+
+    border-bottom: 1px solid #eee;
+
+    padding: 12px;
+
+    text-align: left;
+}
+
+.funding-history th {
+
+    background: #f8f8f8;
+}
