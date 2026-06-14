@@ -35,7 +35,7 @@ function FeedbackBox() {
   };
 
   return (
-    <div className="mt-10 rounded-xl bg-white border p-6 shadow-sm w-1/3">
+    <div className="mt-10 rounded-xl bg-white border p-6 shadow-sm w-1">
       <h2 className="text-xl font-bold mb-4">Help Us Improve</h2>
 
       <input
