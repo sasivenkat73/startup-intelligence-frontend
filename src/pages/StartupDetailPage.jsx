@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import API, { getFundingHistory } from "../services/api";
 import FundingHistory from "../components/FundingHistory";
+import LoadingScreen from "../components/LoadingScreen";
 
 function StartupDetailPage() {
   const { name } = useParams();
@@ -26,7 +27,7 @@ function StartupDetailPage() {
   }, [name]);
 
   if (!profile) {
-    return <p>Loading...</p>;
+    return <LoadingScreen/>
   }
 
   return (
