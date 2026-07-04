@@ -27,142 +27,148 @@ function StartupDetailPage() {
   }, [name]);
 
   if (!profile) {
-    return <LoadingScreen/>
+    return <LoadingScreen />;
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 py-10 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-slate-50/50 px-4 py-10 md:px-8">
+      <div className="mx-auto max-w-7xl">
         {/* HEADER */}
+        <div className="relative mb-8 overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm ring-1 ring-slate-200/50">
+          {/* Subtle decorative glow */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-50/80 blur-3xl transition-all"></div>
 
-        <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
                 {profile.startupName}
               </h1>
-
-              <p className="text-slate-500 text-lg mt-2">{profile.sector}</p>
+              <p className="mt-3 text-lg font-medium text-slate-500">
+                {profile.sector}
+              </p>
             </div>
 
             <a
               href={profile.website}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-blue-600/20 ring-1 ring-inset ring-blue-600 transition-all hover:bg-blue-700 hover:shadow-md hover:shadow-blue-600/30 active:scale-[0.98]"
             >
-              Visit Website →
+              Visit Website
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
             </a>
           </div>
         </div>
 
         {/* FUNDING OVERVIEW */}
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
-            <p className="text-slate-500 text-sm uppercase tracking-wide">
+        <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="group rounded-2xl border border-slate-200/60 bg-white p-6 shadow-sm ring-1 ring-slate-200/20 transition-all hover:border-slate-300 hover:shadow-md">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               Current Investment
             </p>
-
-            <h3 className="text-3xl font-bold text-emerald-600 mt-3">
+            <h3 className="mt-3 text-3xl font-bold tracking-tight text-emerald-600">
               {profile.currentInvestment}
             </h3>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
-            <p className="text-slate-500 text-sm uppercase tracking-wide">
+          <div className="group rounded-2xl border border-slate-200/60 bg-white p-6 shadow-sm ring-1 ring-slate-200/20 transition-all hover:border-slate-300 hover:shadow-md">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               Lead Investors
             </p>
-
-            <h3 className="text-lg font-semibold mt-3 text-slate-800">
+            <h3 className="mt-3 text-lg font-semibold leading-snug text-slate-800">
               {profile.leadInvestors}
             </h3>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
-            <p className="text-slate-500 text-sm uppercase tracking-wide">
+          <div className="group rounded-2xl border border-slate-200/60 bg-white p-6 shadow-sm ring-1 ring-slate-200/20 transition-all hover:border-slate-300 hover:shadow-md">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               Business Model
             </p>
-
-            <h3 className="text-lg font-semibold mt-3 text-slate-800">
+            <h3 className="mt-3 text-lg font-semibold leading-snug text-slate-800">
               {profile.businessModel}
             </h3>
           </div>
         </div>
 
         {/* AI SUMMARY */}
-
-        <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-8">
-          
-
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-2 h-8 bg-blue-600 rounded-full"></div>
-
-              <div>
-                <h2 className="text-2xl font-bold text-slate-900">
-                  AI Company Intelligence
-                </h2>
-
-                <p className="text-slate-500">
-                  AI-generated analysis and market insights
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-blue-100 rounded-2xl p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                <span className="text-sm font-medium text-slate-600">
-                  AI Generated Insight
-                </span>
-              </div>
-
-              <p className="text-slate-700 leading-8 text-[16px] whitespace-pre-wrap">
-                {profile.aiSummary}
+        <div className="mb-8 rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm ring-1 ring-slate-200/50">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="h-8 w-1.5 rounded-full bg-blue-600"></div>
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+                AI Company Intelligence
+              </h2>
+              <p className="mt-1 text-sm text-slate-500">
+                AI-generated analysis and market insights
               </p>
             </div>
+          </div>
+
+          <div className="rounded-2xl border border-blue-100/75 bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/50 p-6 shadow-inner md:p-8">
+            <div className="mb-4 flex items-center gap-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
+                AI Generated Insight
+              </span>
+            </div>
+
+            <p className="whitespace-pre-wrap text-base leading-relaxed text-slate-700">
+              {profile.aiSummary}
+            </p>
           </div>
         </div>
 
         {/* FUNDING HISTORY */}
-
         <div className="mb-8">
           <FundingHistory history={fundingHistory} />
         </div>
 
         {/* BUSINESS DETAILS */}
-
-        <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-2 h-8 bg-indigo-600 rounded-full"></div>
-
-            <h2 className="text-2xl font-bold text-slate-900">
+        <div className="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm ring-1 ring-slate-200/50">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="h-8 w-1.5 rounded-full bg-indigo-600"></div>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900">
               Business Details
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
-              <p className="text-slate-500 text-sm mb-2">Revenue</p>
-
-              <p className="font-semibold text-lg text-slate-900">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="rounded-2xl bg-slate-50/50 p-5 ring-1 ring-inset ring-slate-200/75">
+              <p className="mb-2 text-sm font-medium text-slate-500">Revenue</p>
+              <p className="text-lg font-semibold text-slate-900">
                 {profile.revenue}
               </p>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
-              <p className="text-slate-500 text-sm mb-2">Market Share</p>
-
-              <p className="font-semibold text-lg text-slate-900">
+            <div className="rounded-2xl bg-slate-50/50 p-5 ring-1 ring-inset ring-slate-200/75">
+              <p className="mb-2 text-sm font-medium text-slate-500">
+                Market Share
+              </p>
+              <p className="text-lg font-semibold text-slate-900">
                 {profile.marketShare}
               </p>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
-              <p className="text-slate-500 text-sm mb-2">Parent Company</p>
-
-              <p className="font-semibold text-lg text-slate-900">
+            <div className="rounded-2xl bg-slate-50/50 p-5 ring-1 ring-inset ring-slate-200/75">
+              <p className="mb-2 text-sm font-medium text-slate-500">
+                Parent Company
+              </p>
+              <p className="text-lg font-semibold text-slate-900">
                 {profile.parentCompany || "Independent"}
               </p>
             </div>
