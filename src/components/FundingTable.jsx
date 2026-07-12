@@ -89,11 +89,14 @@ function FundingTable({ fundingData, sortOrder, setSortOrder }) {
         )}
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full whitespace-nowrap text-left text-sm">
-          <thead className="bg-slate-50">
-            <tr className="border-b border-slate-200 text-xs font-semibold uppercase tracking-wide text-slate-600">
+      {/* CHANGED HERE: Added max-h-[500px] and overflow-y-auto to create the internal scrollbox. 
+        You can adjust 500px to whatever height fits your design best (e.g., max-h-[400px], max-h-[600px]).
+      */}
+      <div className="max-h-[500px] overflow-x-auto overflow-y-auto">
+        <table className="w-full whitespace-nowrap text-left text-sm table-auto">
+          {/* CHANGED HERE: Added sticky top-0 and z-10 so the table headers stay visible while scrolling */}
+          <thead className="sticky top-0 z-10 bg-slate-50 shadow-[inset_0_-1px_0_rgba(226,232,240,1)]">
+            <tr className="text-xs font-semibold uppercase tracking-wide text-slate-600">
               <th scope="col" className="px-6 py-4">
                 Startup
               </th>
